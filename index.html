@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Katherine Nayelhi Flores Figueroa  0909-22-1883 -->
+<!-- Jennifer Janeth de León Chuy  0909-22-6024 -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="icon" href="img/bx-code-alt.svg"> <!-- link para cambiar el icono que aparece en la pestaña del navegador--> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> <!-- link para cambiar el tipo de letra que se utilizará en la página-->
+    <link rel="stylesheet" href="estilos_index.css"> <!-- conexión al archivo css-->
+    <script src="index.js" type="text/javascript" defer></script> <!-- conexión al archivo js -->
+</head>
+<body>
+    <div class="contenedor">
+
+        <div id="bienvenida">
+            <div class="texto-animado" id="saludo">Hola!</div>
+            <p class="subtitulo">Bienvenido a nuestro cajero automático</p>
+            <button onclick="entrarRegistro()" id="entrar">ENTRAR</button> <!-- Al hacer click en el botón va a llamar a la función entrarRegistro-->
+        </div>
+
+    </div>
+
+        <img src="img/atm.jpeg" alt="ATM" id="imagen-atm">
+
+    <script>
+        /*función entrarRegistro que nos envia a la página registro.html después de 1000 milisegundos*/
+        function entrarRegistro(){
+            setTimeout(function(){
+            window.location.href = 'registro.html';
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>

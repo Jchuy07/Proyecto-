@@ -1,0 +1,152 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #1a518d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+svg{
+    margin-left: -5%;
+}
+
+.contenedor{
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px #00000050;
+    width: 400px;
+    max-width: 100%;
+}
+
+.encabezado{
+    background-color: #f7f7f7;
+    padding: 20px 40px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.encabezado h2{
+    margin: 0;
+}
+
+.form{
+    padding: 30px 40px;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 14px;
+    font-family: inherit;
+    width: 100%;
+    padding: 10px;
+}
+
+.form-control select {
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    font-size: 14px;
+    font-family: inherit;
+    width: 100%;
+    padding: 10px;
+}
+
+.form-control.exito input{
+    border-color: #2ecc71;
+}
+
+.form-control.error input{
+    border-color: #e74c3c;
+}
+
+.form-control i {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    visibility: hidden;
+}
+
+.form-control.exito i.bxs-check-circle{
+    visibility: visible;
+}
+
+.form-control.error i.bxs-error-circle{
+    visibility: visible;
+}
+
+.form-control small {
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.form-control.error small{
+    visibility: visible;
+    color: #e74c3c;
+}
+
+.form button{
+    position: relative;
+}
+
+.form button span{
+    transition: .4s ease-in-out all;
+    position: absolute;
+    pointer-events: none;
+    top: 5px;
+    left: 130px;
+}
+
+.form button:hover span{
+    left: 20px;
+    pointer-events: none;
+}
+
+.form button .icono{
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    left: 1%;
+    transition: .3s ease-in-out all;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.form button:hover .icono{
+    left: 90%;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.form button{
+    background: #43cea2;
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+    background: linear-gradient(to right, #185a9d, #43cea2);
+    border: none;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    font-size: 16px;
+}

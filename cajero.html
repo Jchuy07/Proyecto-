@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Katherine Nayelhi Flores Figueroa 0909-22-1883 -->
+<!-- Jennifer Janeth de León Chuy 0909-22-6024 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM</title>
+    <link rel="icon" href="img/bx-code-alt.svg"> <!-- Icono de la página -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Link que nos permite utilizar iconos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> <!-- Tipo de letra que utilizamos -->
+    <link rel="stylesheet" href="estilos_cajero.css"> <!-- Link al archivo css -->
+    <!-- En esta página el javascript lo trabajamos en este mismo archivo html -->
+</head>
+
+<body>
+    <div class="form" id="form">
+
+        <!-- Opciones a Realizar -->
+        <div id="opciones">
+            <h1>Elija la opción que desea realizar</h1>
+            <button id="btn-retirar">
+                <i class='bx bx-money-withdraw'></i>
+                <span>Retirar</span>
+            </button>
+            <button id="btn-depositar">
+                <i class='bx bx-money'></i>
+                <span>Depositar</span>
+            </button>
+            <button id="btn-consultar">
+                <i class='bx bxs-info-circle'></i>
+                <span>Consultar</span>
+            </button>
+            <button id="btn-cambiar">
+                <i class='bx bxs-edit'></i>
+                <span>Cambiar PIN</span>
+            </button>
+            <button id="btn-salir">
+                <i class='bx bx-log-out'></i>
+                <span>Salir</span>
+            </button>
+        </div><br>
+
+        <!-- Imagen de un ATM -->
+        <div class="imagenes">
+            <img src="img/atm-svgrepo-com.svg" alt="ATM" id="img-atm">
+        </div>
+
+        <!-- Formulario de Deposito -->
+        <form id="depositar">
+            <div class="encabezado">Deposito</div>
+            <label id="moneda">¿Qué moneda desea utilizar?</label><br>
+            <select size="1" name="moneda" class="moneda" id="monedaD">
+                <option value="Quetzales">Quetzales</option>
+                <option value="Dolares">Dolares</option>
+            </select><br>
+            <br><label id="monto">Ingrese la cantidad que desea depositar</label><br>
+            <input type="text" id="montoDeposito"><br>
+            <button id="btn-submit-depositar">Aceptar</button>
+        </form><br>
+
+        <!-- Imagen de Deposito -->
+        <div class="imagenes">
+            <img src="img/money-svgrepo-com.svg" alt="ATM" id="img-deposito">
+        </div>
+
+        <!-- Formulario de Retiro -->
+        <form id="retirar">
+            <div class="encabezado">Retiro</div>
+            <label id="moneda">¿Qué moneda desea utilizar?</label><br>
+            <select size="1" name="moneda" class="moneda" id="monedaR">
+                <option value="Quetzales">Quetzales</option>
+                <option value="Dolares">Dolares</option>
+            </select><br>
+            <br><label id="monto">Ingrese la cantidad que desea retirar</label><br>
+            <input type="text" id="montoRetirar"><br>
+            <button id="btn-submit-retirar">Aceptar</button>
+        </form><br>
+
+        <!-- Imagen de Retiro -->
+        <div class="imagenes">
+            <img src="img/cash-machine-svgrepo-com.svg" alt="ATM" id="img-retiro">
+        </div>
+
+        <!-- Formulario de Cambiar PIN -->
+        <form id="cambiar">
+            <div class="encabezado">Cambio de PIN</div>
+            <label id="pinActual">Ingrese su PIN actual</label><br>
+            <input type="password" placeholder="1234" id="pin-actual"><br>
+            <label id="pinNuevo">Ingrese su nuevo PIN</label><br>
+            <input type="password" placeholder="1234" id="pin-nuevo"><br>
+            <label id="pinNuevo2">Confirme su nuevo PIN</label><br>
+            <input type="password" placeholder="1234" id="pin-nuevo2"><br>
+            <button id="btn-submit-cambiar">Aceptar</button>
+        </form><br>
+
+        <!-- Imagen de Cambiar PIN -->
+        <div class="imagenes">
+            <img src="img/Password_Flat.svg" alt="ATM" id="img-cambioPin">
+        </div>
+
+        <!-- Formulario de Consulta de Saldos -->
+        <form id="consultar">
+            <div class="encabezado">Consulta de Saldo</div>
+            <label id="cuentas">¿Qué cuenta desea consultar?</label><br>
+            <select name="moneda" id="monedaC">
+                <option value="Quetzales">Quetzales</option>
+                <option value="Dolares">Dolares</option>
+            </select><br>
+            <button id="btn-submit-consultar">Aceptar</button>
+        </form><br>
+
+        <!-- Imagen de Consulta de Saldos -->
+        <div class="imagenes">
+            <img src="img/money-bag-svgrepo-com.svg" alt="ATM" id="img-consulta">
+        </div>
+
+    </div>
+
+    <script>
+        /*Extraemos lo que guardamos en el localStorage en la página anterior*/
+        const tarjeta = localStorage.getItem('numTarjeta');
+        const pin = localStorage.getItem('numPin');
+        let Quetzales = parseFloat(localStorage.getItem('saldoQ')); /*Convertimos el saldoQ a Float para poder utilizarlo en las operaciones y la guardamos en la variable Quetzales*/
+        let Dolares = parseFloat(localStorage.getItem('saldoD')); /*Convertimos el saldoD a Float para poder utilizarlo en las operaciones y la guardamos en la variable Dolares*/
+
+        function opciones() { /* Funcion opciones que oculta todos los formulario e imagenes excepto el formulario de opciones y la imagen del ATM*/
+            document.getElementById('depositar').style = 'display:none';
+            document.getElementById('img-deposito').style = 'display:none';
+            document.getElementById('retirar').style = 'display:none';
+            document.getElementById('img-retiro').style = 'display:none';
+            document.getElementById('cambiar').style = 'display:none';
+            document.getElementById('img-cambioPin').style = 'display:none';
+            document.getElementById('consultar').style = 'display:none';
+            document.getElementById('img-consulta').style = 'display:none';
+        }
+
+        /*---------------------[ RETIRO ]---------------------*/
+        const Retirar = document.getElementById('btn-retirar');
+        Retirar.addEventListener('click', retirar);/*Al hacer click en el botón cuyo id es 'btn-retirar' llamanos a la función retirar*/
+        const submitRetiro = document.getElementById('btn-submit-retirar');
+        submitRetiro.addEventListener('click', validarRetiro);/*Al hacer click en el botón cuyo id es 'btn-submit-retirar' llamanos a la función validarRetiro*/
+
+        function retirar() { /*Funcion Retirar la utilizamos para mostrar el formulario e imagen retirar y ocultamos todo lo demás */
+            document.getElementById('depositar').style = 'display:none';
+            document.getElementById('img-deposito').style = 'display:none';
+            document.getElementById('cambiar').style = 'display:none';
+            document.getElementById('img-cambioPin').style = 'display:none';
+            document.getElementById('consultar').style = 'display:none';
+            document.getElementById('img-consulta').style = 'display:none';
+            document.getElementById('opciones').style = 'display:none';
+            document.getElementById('img-atm').style = 'display:none';
+            document.getElementById('retirar').style = 'display:inline-block';
+            document.getElementById('img-retiro').style = 'display:inline-block';
+            console.log('retiro');
+        }
+
+        function validarRetiro() {
+            let moneda = document.getElementById('monedaR').value; /*Evaluamos que moneda elige el usuario*/
+            let montoRetiro = parseFloat(document.getElementById('montoRetirar').value); /*Evaluamos la cantidad que desea retirar*/
+
+            if (moneda === "Quetzales") {
+                if (montoRetiro <= Quetzales) {
+                    Quetzales -= montoRetiro;
+                    alert('Su saldo actual es de: Q.' + Quetzales);
+                    localStorage.setItem("saldoQ", Quetzales); /* Enviamos de regreso al localStorage el saldoQ con su nuevo valor*/
+                }else if (montoRetiro <= 0 || montoRetiro === '') {
+                    alert('Porfavor ingrese una cantidad mayor que 0')
+                }else {
+                    alert('Su saldo es insuficiente para realizar este retiro');
+                }
+            }else if (moneda === "Dolares") {
+                if (montoRetiro <= Dolares) {
+                    Dolares -= montoRetiro;
+                    alert('Su saldo actual es de: $' + Dolares);
+                    localStorage.setItem("saldoD", Dolares); /* Enviamos de regreso al localStorage el saldoD con su nuevo valor*/
+                }else if (montoRetiro <= 0 || montoRetiro === '') {
+                    alert('Porfavor ingrese una cantidad mayor que 0')
+                }else{
+                    alert('Su saldo es insuficiente para realizar este retiro');
+                }
+            } else {
+                alert('Porfavor seleccione una moneda a retirar');
+            }
+        }
+
+        /*---------------------[ DEPOSITO ]---------------------*/
+        const Depositar = document.getElementById('btn-depositar');
+        Depositar.addEventListener('click', depositar); /*Al hacer click en el botón cuyo id es 'btn-depositar' llamanos a la función depositar*/
+        const submitDeposito = document.getElementById('btn-submit-depositar');
+        submitDeposito.addEventListener('click', validarDeposito);/*Al hacer click en el botón cuyo id es 'btn-submit-depositar' llamamos a la función validarDeposito*/
+
+        function depositar() { /*Aquí oculatamos todo menos el formulario y la imagen depositar*/
+            document.getElementById('retirar').style = 'display:none';
+            document.getElementById('img-retiro').style = 'display:none';
+            document.getElementById('cambiar').style = 'display:none';
+            document.getElementById('img-cambioPin').style = 'display:none';
+            document.getElementById('consultar').style = 'display:none';
+            document.getElementById('img-consulta').style = 'display:none';
+            document.getElementById('opciones').style = 'display:none';
+            document.getElementById('img-atm').style = 'display:none';
+            document.getElementById('depositar').style = 'display:inline-block';
+            document.getElementById('img-deposito').style = 'display:inline-block';
+            console.log('deposito');
+        }
+
+        function validarDeposito() {
+            let moneda = document.getElementById('monedaD').value; /*Evaluamos que moneda elige el usuario*/
+            let montoDeposito = parseFloat(document.getElementById('montoDeposito').value); /*Evaluamos la cantidad que desea depositar*/
+
+            if (moneda === "Quetzales") {
+                if (montoDeposito > 0) {
+                    Quetzales += montoDeposito;
+                    alert('Su saldo actual es de: Q.' + Quetzales);
+                    localStorage.setItem("saldoQ", Quetzales); /* Enviamos de regreso al localStorage el saldoQ con su nuevo valor*/
+                } else {
+                    alert('Porfavor ingrese una cantidad mayor que 0');
+                }
+            } else if (moneda === "Dolares") {
+                if (montoDeposito > 0) {
+                    Dolares += montoDeposito;
+                    alert('Su saldo actual es de: $.' + Dolares);
+                    localStorage.setItem("saldoD", Dolares); /* Enviamos de regreso al localStorage el saldoD con su nuevo valor*/
+                } else {
+                    alert('Porfavor ingrese una cantidad mayor que 0');
+                }
+            } else {
+                alert('Porfavor seleccione una moneda a depositar');
+            }
+        }
+
+        /*---------------------[ CONSULTAR SALDO ]---------------------*/
+        const Consultar = document.getElementById('btn-consultar');
+        Consultar.addEventListener('click', consultar); /*Al hacer click en el botón cuyo id es 'btn-consultar' llamanos a la función consultar*/
+        const submitConsulta = document.getElementById('btn-submit-consultar');
+        submitConsulta.addEventListener('click', validarConsulta); /*Al hacer click en el botón cuyo id es 'btn-submit-consultar' llamanos a la función validarConsulta*/
+
+        function consultar() { /* Aquí ocultamos todo menos el formulario e imagen de consulta*/
+            document.getElementById('depositar').style = 'display:none';
+            document.getElementById('img-deposito').style = 'display:none';
+            document.getElementById('retirar').style = 'display:none';
+            document.getElementById('img-retiro').style = 'display:none';
+            document.getElementById('cambiar').style = 'display:none';
+            document.getElementById('img-cambioPin').style = 'display:none';
+            document.getElementById('opciones').style = 'display:none';
+            document.getElementById('img-atm').style = 'display:none';
+            document.getElementById('consultar').style = 'display:inline-block';
+            document.getElementById('img-consulta').style = 'display:inline-block';
+            console.log('consulta');
+        }
+
+        function validarConsulta() {
+            let moneda = document.getElementById('monedaC').value; /* Evaluamos que moneda elige el usuario*/
+
+            if (moneda === "Quetzales") {
+                alert('Su saldo es de: Q.' + Quetzales); /* Mostramos el saldo que hay en Quetzales*/
+            } else if (moneda === "Dolares") {
+                alert('Su saldo es de: $.' + Dolares); /* Mostramos el saldo que hay en Dolares*/
+            } else {
+                alert('Porfavor seleccione una moneda a consultar');
+            }
+        }
+
+        /*---------------------[ CAMBIAR PIN ]---------------------*/
+        const Cambiar = document.getElementById('btn-cambiar');
+        Cambiar.addEventListener('click', cambiar); /*Al hacer click en el botón cuyo id es 'btn-cambiar' llamanos a la función cambiar*/
+        const submitCambio = document.getElementById('btn-submit-cambiar');
+        submitCambio.addEventListener('click', validarCambio); /*Al hacer click en el botón cuyo id es 'btn-submit-cambiar' llamanos a la función validarCambio*/
+
+        function cambiar() { /* Aquí ocultamos todo menos el formulario e imagen de cambio de PIN*/
+            document.getElementById('depositar').style = 'display:none';
+            document.getElementById('img-deposito').style = 'display:none';
+            document.getElementById('retirar').style = 'display:none';
+            document.getElementById('img-retiro').style = 'display:none';
+            document.getElementById('consultar').style = 'display:none';
+            document.getElementById('img-consulta').style = 'display:none';
+            document.getElementById('opciones').style = 'display:none';
+            document.getElementById('img-atm').style = 'display:none';
+            document.getElementById('cambiar').style = 'display:inline-block';
+            document.getElementById('img-cambioPin').style = 'display:inline-block';
+            console.log('cambio de PIN');
+        }
+
+        function validarCambio() {
+            let pinActual = document.getElementById('pin-actual').value;/* Evaluamos el PIN actual que ingresa el usuario debe se 2022*/
+            let pinNuevo = document.getElementById('pin-nuevo').value; /* Evaluamos el valor que el usuario le quiere dar a su nuevo PIN*/
+            let pinNuevo2 = document.getElementById('pin-nuevo2').value; /* Evaluamos el valor que el usuario le quiere dar a su nuevo PIN por segunda vez para poder ser combrobada*/
+            var pinPat = "^[0-9]{4}$";/* Aquí utilizamos esta expresión para limitar al usuario a elegir un PIN de solo 4 digitos*/
+
+            if (pin === pinActual) {
+                if (pinNuevo.match(pinPat)) {
+                    if (pinNuevo === pinNuevo2) {
+                    alert('PIN guardado exitosamente')
+                    localStorage.setItem("numPin", pinNuevo); /* Enviamos de regreso al localStorage el numPin con su nuevo valor*/
+                    }else{
+                        alert('La comprobación no coincide')
+                    }
+                }else{
+                    alert('Porfavor ingrese un número de 4 digitos');
+                }
+            } else {
+                alert('El PIN ingresado no es el correcto, porfavor intente de nuevo');
+            }
+        }
+
+        /*---------------------[ SALIR ]---------------------*/
+        const Salir = document.getElementById('btn-salir');
+        Salir.addEventListener('click', salir); /*Al hacer click en el botoón cuyo id es 'btn-salir' llamamos a la función salir*/
+
+        function salir() { /* La funcion salir nos manda a la página index.html después de 1000 milisegundos*/
+            console.log('saliendo');
+            setTimeout(function () {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+        opciones();/*Llamamos a la función opciones para que se ejecute primero*/
+    </script>
+</body>
+</html>

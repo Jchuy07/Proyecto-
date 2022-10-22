@@ -1,0 +1,262 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #1a518d;
+    margin: 0;
+    padding: 0;
+}
+
+.form{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    grid-template-columns: 50% 50%;
+}
+
+.encabezado{
+    margin: 10px 5px 20px;
+    font-size: 24px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#opciones{
+    width: 60px;
+    height: 300px;
+    display: grid;
+    grid-template-rows: repeat(5, 70px);
+    border-radius: 50%;
+    left: 20%;
+    position: absolute;
+}
+#opciones h1{
+    color: #fff;
+    position: absolute;
+    font-size: 26px;
+    top: -100px;
+    left: -340%;
+    width: 500px;
+    letter-spacing: 2px;
+}
+#opciones button{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.256, 1.55);
+}
+#opciones button i{
+    position: relative;
+    right: 0;
+    height: 60px;
+    width: 60px;
+    display: block;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50%;
+    text-align: center;
+    z-index: 2;
+    font-size: 25px;
+    line-height: 60px;
+}
+#opciones button span{
+    position: absolute;
+    left: 10%;
+    background-color: #000;
+    font-size: 20px;
+    width: 150px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.256, 1.55);
+}
+#opciones button:hover span{
+    opacity: 1;
+    left: 130%;
+    pointer-events: none;
+    color: #fff;
+    background-color: #000;
+}
+#opciones button span::before{
+    position: absolute;
+    content: '';
+    height: 20px;
+    width: 20px;
+    background-color: #000;
+    left: -4px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.256, 1.55);
+}
+#opciones button:hover i,
+#opciones button:hover span,
+#opciones button:hover span::before{
+    background-color: #000;
+    color: #fff;
+}
+
+#depositar{
+    background-color: #fff;
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 15px 5px #00000033;
+    padding: 15px;
+    font-size: 16px;
+    position: absolute;
+    left: 10%;
+    top: 20%;
+}
+#depositar label{
+    margin: 5px;
+}
+#depositar input{
+    margin: 5px;
+    width: 95%;
+    height: 25px;
+}
+#depositar select{
+    margin: 5px;
+    width: 97%;
+    height: 30px;
+}
+#depositar button{
+    margin: 5px;
+    margin-top: 30px;
+    width: 97%;
+    height: 35px;
+    background: #43cea2;
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+    background: linear-gradient(to right, #185a9d, #43cea2);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#retirar{
+    background-color: #fff;
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 15px 5px #00000033;
+    padding: 15px;
+    font-size: 16px;
+    position: absolute;
+    left: 10%;
+    top: 20%;
+}
+#retirar label{
+    margin: 5px;
+}
+#retirar input{
+    margin: 5px;
+    width: 95%;
+    height: 25px;
+}
+#retirar select{
+    margin: 5px;
+    width: 97%;
+    height: 30px;
+}
+#retirar button{
+    margin: 5px;
+    margin-top: 30px;
+    width: 97%;
+    height: 35px;
+    background: #43cea2;
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+    background: linear-gradient(to right, #185a9d, #43cea2);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#cambiar{
+    background-color: #fff;
+    width: 400px;
+    height: 320px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 15px 5px #00000033;
+    padding: 15px;
+    font-size: 16px;
+    position: absolute;
+    left: 10%;
+    top: 20%;
+}
+#cambiar label{
+    margin: 5px;
+}
+#cambiar input{
+    margin: 5px;
+    width: 95%;
+    height: 25px;
+}
+#cambiar button{
+    margin: 5px;
+    margin-top: 20px;
+    width: 97%;
+    height: 35px;
+    background: #43cea2;
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+    background: linear-gradient(to right, #185a9d, #43cea2);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+#consultar{
+    background-color: #fff;
+    width: 400px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 15px 5px #00000033;
+    padding: 15px;
+    font-size: 16px;
+    position: absolute;
+    left: 10%;
+    top: 20%;
+}
+#consultar label{
+    margin: 5px;
+}
+#consultar select{
+    margin: 5px;
+    width: 97%;
+    height: 30px;
+}
+#consultar button{
+    margin: 5px;
+    margin-top: 125px;
+    width: 97%;
+    height: 35px;
+    background: #43cea2;
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);
+    background: linear-gradient(to right, #185a9d, #43cea2);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.imagenes{
+    position: absolute;
+    right: 10%;
+    width: 500px;
+    height: 500px;
+}

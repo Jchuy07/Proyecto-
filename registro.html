@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Katherine Nayelhi Flores Figueroa  0909-22-1883 -->
+<!-- Jennifer Janeth de León Chuy  0909-22-6024 -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso</title>
+    <link rel="icon" href="img/bx-code-alt.svg"><!--Icono de la página-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!--Libreria para utilizar iconos-->
+    <link rel="stylesheet" href="estilos_registro.css"> <!-- Link al archivo css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> <!--Tipo de letra-->
+    <script src="registro.js" type="text/javascript" defer></script><!-- Link al archivo js -->
+</head>
+
+<body>
+    <!-- Inicio de una imagen SVG-->
+    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500"
+        height="500" class="illustration">
+        <defs>
+            <style>
+                .cls-1 {
+                    fill: #f9bb0d;
+                }
+
+                .cls-2 {
+                    fill: #ffd44d;
+                }
+
+                .cls-3 {
+                    fill: #24285b;
+                }
+
+                .cls-4 {
+                    fill: #fff;
+                }
+
+                .cls-5 {
+                    fill: #f0457d;
+                }
+
+                .cls-6 {
+                    fill: #db2868;
+                }
+            </style>
+        </defs>
+        <title>Internet security</title>
+        <rect class="cls-1" x="63.16" y="116" width="318.48" height="200.4" rx="16.91"></rect>
+        <rect class="cls-2" x="63.16" y="116" width="288.63" height="176.36" rx="16.91"></rect>
+        <rect class="cls-3" x="63.16" y="167.38" width="318.48" height="36.8"></rect>
+        <rect class="cls-4" x="230.69" y="243" width="97.86" height="9.44" rx="4.3"></rect>
+        <rect class="cls-4" x="116.25" y="243" width="97.86" height="9.44" rx="4.3"></rect>
+        <path class="cls-5" d="M429.84,283.75c-36.55-12.2-62.61-35.95-62.61-35.95s-26.06,23.75-62.61,35.95c0,0-2.19,77.13,62.61,101.25C432,360.88,429.84,283.75,429.84,283.75Z"></path>
+        <path class="cls-3" d="M370,284.64h-5.58a14.08,14.08,0,0,0-14.07,14.07v11.15a2.93,2.93,0,1,0,5.85,0V298.71a8.23,8.23,0,0,1,8.22-8.22H370a8.23,8.23,0,0,1,8.22,8.22v11.17h5.85V298.71A14.08,14.08,0,0,0,370,284.64Z"></path>
+        <rect class="cls-1" x="343.31" y="308.71" width="47.85" height="39.45" rx="3"></rect>
+        <rect class="cls-2" x="343.31" y="308.71" width="42.2" height="35.13" rx="3"></rect>
+        <path class="cls-3" d="M372.75,325a5.7,5.7,0,1,0-8.88,4.73v3.41a3.36,3.36,0,1,0,6.72,0v-3.68A5.69,5.69,0,0,0,372.75,325Z"></path>
+        <path class="cls-6" d="M429.84,283.75c-36.55-12.2-62.61-35.95-62.61-35.95s-3.18,2.9-8.88,7.19c10.61,8,29.94,20.82,53.72,28.76,0,0,2,69.89-53.72,97.42a94.51,94.51,0,0,0,8.88,3.83C432,360.88,429.84,283.75,429.84,283.75Z"></path>
+    </svg> <!-- Fin del SVG-->
+    <div class="contenedor">
+        <div class="encabezado">
+            <h2>Bienvenido al ATM</h2>
+        </div>
+        <form class="form" id="form">
+            <p1>Ingrese los datos que se le solicitan<br><br></p1>
+            <div class="form-control">
+                <label>Número de la Tarjeta</label>
+                <input type="text" placeholder="0909-22-1234" id="tarjeta">
+                <i class='bx bxs-error-circle' style='color:#e74c3c'></i>
+                <i class='bx bxs-check-circle' style='color:#2ecc71'></i>
+                <small>Error</small>
+            </div>
+            <div class="form-control">
+                <label>PIN</label>
+                <input type="password" placeholder="1234" id="pin">
+                <i class='bx bxs-error-circle' style='color:#e74c3c'></i>
+                <i class='bx bxs-check-circle' style='color:#2ecc71'></i>
+                <small>Error</small>
+            </div>
+            <button>
+                <div class="icono"><i class='bx bx-right-arrow-alt'></i></div>
+                <span>Ingresar</span>
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>
